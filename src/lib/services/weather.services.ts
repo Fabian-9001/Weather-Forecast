@@ -23,9 +23,9 @@ const useCoords = () => {
 
 const useWeather = () => {
   const key = import.meta.env.VITE_API_KEY
-  const position = useCoords()
+  const coords = useCoords()
   const { data, mutate } = useSWR<IWeatherData>(
-    `api.openweathermap.org/data/2.5/forecast?lat=${position?.latitude}&lon=${position?.longitude}&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${coords?.latitude}&lon=${coords?.longitude}&appid=${key}`,
     fetcher
   )
   return { data, mutate }
